@@ -4,16 +4,28 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		if (90 <= n && n <= 100) {
+		switch (n / 10) {
+
+		case 9:
+		case 10: {
 			System.out.println("A");
-		} else if (80 <= n && n <= 89) {
+			break;
+		}
+		case 8: {
 			System.out.println("B");
-		} else if (70 <= n && n <= 79) {
+			break;
+		}
+		case 7: {
 			System.out.println("C");
-		} else if (60 <= n && n <= 69) {
+			break;
+		}
+		case 6: {
 			System.out.println("D");
-		} else {
+			break;
+		}
+		default: {
 			System.out.println("F");
+		}
 		}
 	}
 }
