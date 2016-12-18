@@ -8,37 +8,17 @@ public class Main {
 		int n = sc.nextInt();
 		int[] array = new int[n];
 
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0; i < n; i++) {
 			array[i] = sc.nextInt();
 		}
-		for (int j = 0; j < array.length; j++) {
-			for (int k = j + 1; k < array.length; k++) {
-				if (array[j] < array[k]) {
-					if(max<array[k]) {
-					max = array[k];
-					}
-				}
-				if (array[j] > array[k]) {
-					if(max<array[j]) {
-					max = array[j];
-					}
-				}
+		for (int j = 0; j < n; j++) {
+			if(max<array[j]) {
+				max=array[j];
+			}
+			if(min>array[j]) {
+				min=array[j];
 			}
 		}
-		for (int j = 0; j < array.length; j++) {
-			for (int k = j + 1; k < array.length; k++) {
-				if (array[j] > array[k]) {
-					if(min>array[k]) {
-					min = array[k];
-					}
-				}
-				if (array[j] < array[k]) {
-					if(min>array[j]) {
-					min = array[j];
-					}
-				}
-	}
-}
-		System.out.println(min+" "+max);
+		System.out.println(min + " " + max);
 	}
 }
