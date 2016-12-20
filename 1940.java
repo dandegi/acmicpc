@@ -3,24 +3,17 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		int count = 0;
 		int n = sc.nextInt();
 		int m = sc.nextInt();
-		int [] array = new int[10000001];
-		
+		sc.nextLine();
+		String [] s = sc.nextLine().split(" ");
 		for (int i=0; i<n; i++) {
-			array[sc.nextInt()]++;
-		}
-		
-		int start = 1, end = m-1, count = 0;
-		
-		while (start<end) {
-			if (array[start] != 0 && array[end] != 0) {
-				if (start+end == m) {
+			for (int j=i+1; j<n; j++) {
+				if (Integer.parseInt(s[i]) + Integer.parseInt(s[j]) == m) {
 					count++;
 				}
 			}
-			start++;
-			end--;
 		}
 		System.out.println(count);
 	}
