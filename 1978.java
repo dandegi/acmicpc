@@ -10,19 +10,18 @@ public class Main {
 		}
 		int count = 0;
 
-		boolean prime = false;
 		for (int i = 0; i < n; i++) {
-			for (int j=2; j<array[i]; j++) {
-				System.out.println("실행"+j);
-				if(array[i]%j==0) {
+			boolean prime = false;
+			for (int j = 2; j < array[i]; j++) {
+				if (array[i] % j == 0) {
 					prime = true;
 					break;
 				}
 			}
-			if(array[i]==1) {
+			if (array[i] == 1) {
 				prime = true;
 			}
-			if(prime == false){
+			if (prime == false) {
 				count++;
 			}
 		}
