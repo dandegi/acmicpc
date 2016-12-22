@@ -9,11 +9,14 @@ public class Main {
 			array[i] = sc.nextInt();
 		}
 		int count = 0;
+
+		boolean prime = false;
 		for (int i = 0; i < n; i++) {
-			boolean prime = false;
 			for (int j=2; j<array[i]; j++) {
+				System.out.println("실행"+j);
 				if(array[i]%j==0) {
 					prime = true;
+					break;
 				}
 			}
 			if(array[i]==1) {
