@@ -16,8 +16,8 @@ class Circle {
 	Point origin;
 	int radius;
 
-	public Circle(Point point, int r) {
-		origin = point;
+	public Circle(int x, int y, int r) {
+		origin = new Point(x, y);
 		radius = r;
 	}
 
@@ -32,10 +32,8 @@ class Ring {
 	Circle circle2;
 
 	public Ring(int x, int y, int r, int x2, int y2, int r2) {
-		Point po1 = new Point(x, y);
-		Point po2 = new Point(x2, y2);
-		Circle cir1 = new Circle(po1, r);
-		Circle cir2 = new Circle(po2, r2);
+		Circle cir1 = new Circle(x, y, r);
+		Circle cir2 = new Circle(x2, y2, r2);
 		circle1 = cir1;
 		circle2 = cir2;
 	}
