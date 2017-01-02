@@ -1,73 +1,70 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
 
-class Stack {
-	int i = 0;
-	int[] array = new int[10001];
+class DequeClass {
+	Stack<Integer> stack;
 
-	void push(int x) {
-		array[i] = x;
-		i++;
+	public DequeClass() {
+		stack = new Stack<>();
 	}
 
-	void pop() {
-		if (array[0] == 0) {
-			System.out.println(-1);
+	public void push(int x) {
+		stack.push(x);
+	}
+
+	public int pop() {
+		if (size() == 0) {
+			return -1;
 		} else {
-			System.out.println(array[i-1]);
-			array[i-1] = 0;
-			i--;
+			return stack.pop();
 		}
 	}
 
-	void size() {
-		int count = 0;
-		for (int j = 0; j < 10001; j++) {
-			if (array[j] != 0) {
-				count++;
-			}
-		}
-		System.out.println(count);
+	public int size() {
+		return stack.size();
 	}
 
-	void empty() {
-		if (array[0] == 0) {
-			System.out.println(1);
+	public int empty() {
+		if (stack.isEmpty() == true) {
+			return 1;
 		} else {
-			System.out.println(0);
+			return 0;
 		}
+
 	}
 
-	void top() {
-		if (array[0] == 0) {
-			System.out.println(-1);
-		} else {
-			System.out.println(array[i-1]);
+	public int top() {
+		if(size() == 0) {
+			return -1;
 		}
+		return stack.peek();
 	}
 
 }
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		Stack st = new Stack();
-		int n = sc.nextInt();
-		for (int i=0; i<=n; i++) {
-			String [] s = sc.nextLine().split(" ");
-			if(s[0].equals("push")) {
-				st.push(Integer.parseInt(s[1]));
+	public static void main(String[] args) throws IOException {
+		DequeClass dec = new DequeClass();
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		for (int i = 0; i < n; i++) {
+			String[] s = br.readLine().split(" ");
+			if (s[0].equals("push")) {
+				dec.push(Integer.parseInt(s[1]));
 			}
-			if(s[0].equals("pop")) {
-				st.pop();
+			if (s[0].equals("pop")) {
+				System.out.println(dec.pop());
 			}
-			if(s[0].equals("size")) {
-				st.size();
+			if (s[0].equals("empty")) {
+				System.out.println(dec.empty());
 			}
-			if(s[0].equals("empty")) {
-				st.empty();
+			if (s[0].equals("size")) {
+				System.out.println(dec.size());
 			}
-			if(s[0].equals("top")) {
-				st.top();
+			if (s[0].equals("top")) {
+				System.out.println(dec.top());
 			}
 		}
 	}
