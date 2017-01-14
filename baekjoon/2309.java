@@ -26,7 +26,7 @@ public class Main {
 		int ii = 0;
 		int jj = 0;
 		StringBuilder sb = new StringBuilder();
-			
+			//난쟁이 1 : i, 난쟁이 2 : j 두명 빼고 반복문을 돌린다.
 			int sum = 0;
 			out1: for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
