@@ -1,29 +1,25 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
 	static StringBuilder sb = new StringBuilder();
 	static int cnt = 0;
-	public static void dfs(int[][] a, boolean[] c, int start, int v) {
-		Stack<Integer> stack = new Stack<Integer>();
-		stack.push(start);
+	public static void bfs(int[][] a, boolean[] c, int start, int v) {
+		Queue<Integer> qu = new LinkedList<Integer>();
+		qu.offer(start);
 		boolean ccc = false;
-		while (!stack.isEmpty()) {
-			boolean cc = false;
-			int vv = stack.peek();
+		while (!qu.isEmpty()) {
+			int vv = qu.poll();
+
 			for (int i = 1; i <= v; i++) {
 				if (a[vv][i] == 1 && c[i] == false) {
-					cc = true;
-					stack.push(i);
 					c[i] = true;
+					qu.offer(i);
 					ccc = true;
-					break;
 				}
-			}
-			if (cc == false) {
-				stack.pop();
 			}
 		}
 		if(ccc) {
@@ -46,7 +42,7 @@ public class Main {
 			}
 
 			for (int j = 1; j <= n; j++) {
-				dfs(a, c, j, n);
+				bfs(a, c, j, n);
 			}
 			sb.append(cnt).append("\n");
 		}
