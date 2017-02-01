@@ -8,57 +8,33 @@ import java.util.Queue;
 
 public class Main {
 	static StringBuilder sb = new StringBuilder();
-	public static void bfs(int[][] a, boolean[][] c, int v, int vv, ArrayList<Integer> ans) {
+
+	public static void bfs(int[][] a, boolean[][] c, int x, int y, ArrayList<Integer> ans) {
 		Queue<Pair> q = new LinkedList<Pair>();
-		
-		int[] dx = {-1, 0, 1, 0};
-		int[] dy = {0, 1, 0, -1};
-		q.offer(new Pair(v, vv));
-		c[v][vv] = true;
-		int hcnt = 1;
+
+		int[] dx = { -1, 0, 1, 0 };
+		int[] dy = { 0, 1, 0, -1 };
+		q.offer(new Pair(x, y));
+		c[x][y] = true;
+		int home_cnt = 1;
 		while (!q.isEmpty()) {
 			Pair p = q.poll();
-			int pv = p.x;
-			int pvv = p.y;
-			
-			for(int i=0; i<4; i++) {
-				int xx = pv + dx[i];
-				int yy = pvv + dy[i];
-				
-				if(a[xx][yy] == 1 && c[xx][yy] == false) {
+			int px = p.x;
+			int py = p.y;
+
+			for (int i = 0; i < 4; i++) {
+				int xx = px + dx[i];
+				int yy = py + dy[i];
+
+				if (a[xx][yy] == 1 && c[xx][yy] == false) {
 					q.offer(new Pair(xx, yy));
 					c[xx][yy] = true;
-					hcnt++;
+					home_cnt++;
 				}
 			}
-			
-//				if (a[pv - 1][pvv] == 1 && c[pv - 1][pvv] == false) {
-//					q.offer(new Pair(pv - 1, pvv));
-//					c[pv - 1][pvv] = true;
-//					hcnt++;
-//				}
-//				
-//				if (a[pv][pvv + 1] == 1 && c[pv][pvv + 1] == false) {
-//					q.offer(new Pair(pv, pvv + 1));
-//					c[pv][pvv + 1] = true;
-//					hcnt++;
-//				}
-//				
-//				if (a[pv + 1][pvv] == 1 && c[pv + 1][pvv] == false) {
-//					q.offer(new Pair(pv + 1, pvv));
-//					c[pv + 1][pvv] = true;
-//					hcnt++;
-//				}
-//				
-//				if (a[pv][pvv - 1] == 1 && c[pv][pvv - 1] == false) {
-//					q.offer(new Pair(pv, pvv - 1));
-//					c[pv][pvv - 1] = true;
-//					hcnt++;
-//				}
-				
-			}
-		ans.add(hcnt);
 		}
+		ans.add(home_cnt);
+	}
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -84,7 +60,7 @@ public class Main {
 		}
 		sb.append(cnt).append("\n");
 		Collections.sort(ans);
-		for(int i=0; i<ans.size(); i++) {
+		for (int i = 0; i < ans.size(); i++) {
 			sb.append(ans.get(i)).append("\n");
 		}
 		System.out.print(sb);
@@ -99,12 +75,27 @@ class Pair {
 		this.y = y;
 	}
 }
-
-
-//1111111
-//1111111
-//1111111
-//1111111
-//1111111
-//1111111
-//1111111
+// bfs포문을 이프로하면 이렇게 된다.
+//if (a[px - 1][py] == 1 && c[px - 1][py] == false) {
+//q.offer(new Pair(px - 1, py));
+//c[px - 1][py] = true;
+//home_cnt++;
+//}
+//
+//if (a[px][py + 1] == 1 && c[px][py + 1] == false) {
+//q.offer(new Pair(px, py + 1));
+//c[px][py + 1] = true;
+//home_cnt++;
+//}
+//
+//if (a[px + 1][py] == 1 && c[px + 1][py] == false) {
+//q.offer(new Pair(px + 1, py));
+//c[px + 1][py] = true;
+//home_cnt++;
+//}
+//
+//if (a[px][py - 1] == 1 && c[px][py - 1] == false) {
+//q.offer(new Pair(px, py - 1));
+//c[px][py - 1] = true;
+//home_cnt++;
+//}
