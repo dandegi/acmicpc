@@ -6,6 +6,8 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// 여러개의 출발점이 있을수 있으므로 q를 전역으로 선언해서 미리 다 넣은다음에 bfs를 사용한다.
+// c배열을 인트형으로 선언해서 몇일만에 익은지 이전 c배열것을 확인해서 +1 한뒤에 c배열에 넣는다.
 class Pair {
 	int x, y;
 
