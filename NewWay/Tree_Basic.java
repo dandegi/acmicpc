@@ -20,6 +20,10 @@ class TreeNode<T> implements Iterable<TreeNode<T>> {
 		this.children.add(childNode);
 		return childNode;
 	}
+	
+	public String getData() {
+		return (String) data;
+	}
 
 	@Override
 	public Iterator<TreeNode<T>> iterator() {
@@ -39,10 +43,10 @@ public class Main {
 			TreeNode<String> node2 = root.addChild("node2");
 			TreeNode<String> node3 = root.addChild("node3");
 			{
-				TreeNode<String> node4 = root.addChild("node4");
-				TreeNode<String> node5 = root.addChild("node5");
+				TreeNode<String> node4 = node1.addChild("node4");
+				TreeNode<String> node5 = node1.addChild("node5");
 				{
-					TreeNode<String> node6 = root.addChild("node6");
+					TreeNode<String> node6 = node3.addChild("node6");
 				}
 			}
 		}
