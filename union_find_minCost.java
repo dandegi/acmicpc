@@ -1,3 +1,5 @@
+//http://koitp.org/problem/SDS_PRO_10_4/read/
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
